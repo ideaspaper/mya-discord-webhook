@@ -4,11 +4,11 @@
 
 This is Discord bot (webhook) for Hacktiv8 Remote Campus (Phase 0). One the aims of remote campus is to give students the experience of offline campus, therefore engaging environment is a must. Remote campus' instructors have to be active in chat, just like offline campus' instructors should be present in the campus all the time. After some observations, remote campus' instructors have to send some repetitive messages everyday. Those messages are:
 
-- Quote + morning greeting
-- Lunch greeting
-- Standup message
-- Joke/useless fact message
-- Night greeting
+- Quote + morning greeting.
+- Lunch greeting.
+- Standup message.
+- Joke/useless fact message.
+- Night greeting.
 
 By using this bot, remote campus' instructors do not need to send those messages manually.
 
