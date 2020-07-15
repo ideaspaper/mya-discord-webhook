@@ -32,6 +32,6 @@ Configuration for this bot will be taken from `config.json`. You should create t
 - `webhookID`: get it from Discord server.
 - `webhookToken`: get it from Discord server.
 - `webhookName`: name of the bot.
-- `dbName`: sqlite database for messages.
+- `dbName`: sqlite database for messages. The database should be placed inside `dist` directory.
 
 After making the `config.json` file, execute `npm run start` to run the bot.

@@ -48,6 +48,9 @@ Temporary Items
 
 /node_modules
 /src/config.json
-/dist
+
+# !/dist
+/dist/*
+!/dist/webhook.db
 
 .DS_Store
