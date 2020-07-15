@@ -2,7 +2,7 @@
 
 ## Description
 
-This is Discord bot (webhook) for Hacktiv8 Remote Campus (Phase 0). One the aims of remote campus is to give students the experience of offline campus, therefore engaging environment is a must. Remote campus' instructors have to be active in chat, just like offline campus' instructors should be present all the time. After some observation, some chat messages are repetitive. Those messages are:
+This is Discord bot (webhook) for Hacktiv8 Remote Campus (Phase 0). One the aims of remote campus is to give students the experience of offline campus, therefore engaging environment is a must. Remote campus' instructors have to be active in chat, just like offline campus' instructors should be present in the campus all the time. After some observations, remote campus' instructors have to send some repetitive messages everyday. Those messages are:
 
 - Quote + morning greeting
 - Lunch greeting
@@ -10,7 +10,7 @@ This is Discord bot (webhook) for Hacktiv8 Remote Campus (Phase 0). One the aims
 - Joke/useless fact message
 - Night greeting
 
-By using this bot, those messages will be automated.
+By using this bot, remote campus' instructors do not need to send those messages manually.
 
 ## Installation
 
@@ -20,7 +20,7 @@ This bot deppends on some external packages. Use `npm install` to install all ne
 
 ### `config.json`
 
-Configuration for this bot will be taken from `config.json`. You should create the file and put it in `src` directory. The template for `config.json` file is as below.
+Configuration for this bot will be taken from `config.json`. You should create the file and put it in `src` directory. The template for `config.json` is as below.
 
 ```json
 {
@@ -71,7 +71,7 @@ The schedule for sending each message can be configured in `jobs.json`. Each mes
 }
 ```
 
-- `standard`: this refer to standard job, where each job inside it will be executed everyday. Future release will include `special`, where each job inside it will be executed on special day (e.g. at the end of the week).
+- `standard`: the name refer to standard job, where each job inside it will be executed everyday. Future release will include `special`, where each job inside it will be executed on special day (e.g. at the end of the week).
 - `event`: as for now, supported events are `"quote"`, `"morning"`, `"lunch"`, `"fact"`, `"joke"`, `"standup"` and `"night"`.
 - `cronTime`: cron schedule expression.
 

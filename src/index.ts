@@ -5,7 +5,7 @@ import { ICronWork } from './cron-work/ICronWork';
 import { CronWork } from './cron-work/CronWork';
 import { standard } from './jobs.json';
 
-const appLogger = AppLogger.getInstance();
+const appLogger: AppLogger = AppLogger.getInstance();
 const message: DBMessage = DBMessage.getInstance();
 const client: DiscordClient = DiscordClient.getInstance();
 
