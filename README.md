@@ -20,7 +20,7 @@ This bot deppends on some external packages. Use `npm install` to install all ne
 
 ### `config.json`
 
-Configuration for this bot will be taken from `config.json`. You should create the file and put it in `src` directory. The template for `config.json` is as below.
+Configuration for this bot will be taken from `config.json`. You should create the file then put it in `src` directory. The template for `config.json` is as below.
 
 ```json
 {
@@ -38,7 +38,7 @@ Configuration for this bot will be taken from `config.json`. You should create t
 
 ### `jobs.json`
 
-The schedule for sending each message can be configured in `jobs.json`. Each message will be associated with one job. Example of `jobs.json` content is as below.
+The schedule for sending each message can be configured in `jobs.json`. Create the file then put it in `src` directory. Each message will be associated with one job. Example of `jobs.json` content is as below.
 
 ```json
 {
@@ -66,6 +66,10 @@ The schedule for sending each message can be configured in `jobs.json`. Each mes
     {
       "event": "night",
       "cronTime": "0 0 18 * * *"
+    },
+    {
+      "event": "joke",
+      "cronTime": "0 0 19 * * *"
     }
   ]
 }
