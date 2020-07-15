@@ -3,89 +3,43 @@ import { DBMessage } from './db-messages/DBMessage';
 import { DiscordClient } from './discord-client/DiscordClient'
 import { ICronWork } from './cron-work/ICronWork';
 import { CronWork } from './cron-work/CronWork';
+import { standard } from './jobs.json';
 
 const appLogger = AppLogger.getInstance();
 const message: DBMessage = DBMessage.getInstance();
 const client: DiscordClient = DiscordClient.getInstance();
 
-const jobMorning: ICronWork = new CronWork('* * * * * *', () => {
-  message.getMessage('morning')
-    .then((data) => {
-      appLogger.log('info', data.text);
-      client.sendMessage(data.text);
-    })
-    .then(() => {
-      jobMorning.getNextWork().start();
-      jobMorning.stop();
-    })
-    .catch(() => {
-      appLogger.log('error', 'INDEX_ERROR: cron job failed');
-    });
-});
+// Array for storing all standardJob work instance
+const standardJobs: ICronWork[] = [];
 
-const jobLunch: ICronWork = new CronWork('* * * * * *', () => {
-  message.getMessage('lunch')
-    .then((data) => {
-      appLogger.log('info', data.text);
-      client.sendMessage(data.text);
-    })
-    .then(() => {
-      jobLunch.getNextWork().start();
-      jobLunch.stop();
-    })
-    .catch(() => {
-      appLogger.log('error', 'INDEX_ERROR: cron job failed');
-    });
-});
+// Create work instances based on jobs.json, then store them to standardJobs
+for (const job of standard) {
+  const standardJob: ICronWork = new CronWork(job.cronTime, () => {
+    message.getMessage(job.event)
+      .then((data) => {
+        appLogger.log('info', `INDEX_INFO: ${data.text}`);
+        client.sendMessage(data.text);
+      })
+      .then(() => {
+        standardJob.getNextWork().start();
+        standardJob.stop();
+      })
+      .catch(() => {
+        appLogger.log('error', 'INDEX_ERROR: cron job failed');
+      });
+  });
 
-const jobFact: ICronWork = new CronWork('* * * * * *', () => {
-  message.getMessage('fact')
-    .then((data) => {
-      appLogger.log('info', data.text);
-      client.sendMessage(data.text);
-    })
-    .then(() => {
-      jobFact.getNextWork().start();
-      jobFact.stop();
-    })
-    .catch(() => {
-      appLogger.log('error', 'INDEX_ERROR: cron job failed');
-    });
-});
+  standardJobs.push(standardJob);
+}
 
-const jobStandup: ICronWork = new CronWork('* * * * * *', () => {
-  message.getMessage('standup')
-    .then((data) => {
-      appLogger.log('info', data.text);
-      client.sendMessage(data.text);
-    })
-    .then(() => {
-      jobStandup.getNextWork().start();
-      jobStandup.stop();
-    })
-    .catch(() => {
-      appLogger.log('error', 'INDEX_ERROR: cron job failed');
-    });
-});
+// Assign next work instance (i + 1) for each of the work instances.
+// Last work instance will get first work instance as the next work.
+for (let i = 0; i < standardJobs.length; i++) {
+  i !== standardJobs.length - 1
+    ? standardJobs[i].setNextWork(standardJobs[i + 1])
+    : standardJobs[i].setNextWork(standardJobs[0]);
+}
 
-const jobNight: ICronWork = new CronWork('* * * * * *', () => {
-  message.getMessage('night')
-    .then((data) => {
-      appLogger.log('info', data.text);
-      client.sendMessage(data.text);
-    })
-    .then(() => {
-      jobNight.getNextWork().start();
-      jobNight.stop();
-    })
-    .catch(() => {
-      appLogger.log('error', 'INDEX_ERROR: cron job failed');
-    });
-});
-
-jobMorning.setNextWork(jobLunch);
-jobLunch.setNextWork(jobFact);
-jobFact.setNextWork(jobStandup);
-jobStandup.setNextWork(jobNight);
-jobNight.setNextWork(jobMorning);
-jobMorning.start();
+// Start the first work instance.
+appLogger.log('info', 'INDEX_INFO: standard jobs started');
+standardJobs[0].start();

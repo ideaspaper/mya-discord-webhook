@@ -1,0 +1,28 @@
+{
+  "standard": [
+    {
+      "event": "quote",
+      "cronTime": "0 30 8 * * *"
+    },
+    {
+      "event": "morning",
+      "cronTime": "5 30 8 * * *"
+    },
+    {
+      "event": "lunch",
+      "cronTime": "0 0 12 * * *"
+    },
+    {
+      "event": "fact",
+      "cronTime": "0 42 14 * * *"
+    },
+    {
+      "event": "standup",
+      "cronTime": "0 0 17 * * *"
+    },
+    {
+      "event": "night",
+      "cronTime": "0 0 18 * * *"
+    }
+  ]
+}
