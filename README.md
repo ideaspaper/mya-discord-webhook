@@ -45,31 +45,31 @@ The schedule for sending each message can be configured in `jobs.json`. Create t
   "standard": [
     {
       "event": "quote",
-      "cronTime": "0 30 8 * * *"
+      "cronTime": "0 30 8"
     },
     {
       "event": "morning",
-      "cronTime": "5 30 8 * * *"
+      "cronTime": "5 30 8"
     },
     {
       "event": "lunch",
-      "cronTime": "0 0 12 * * *"
+      "cronTime": "0 0 12"
     },
     {
       "event": "fact",
-      "cronTime": "0 42 14 * * *"
+      "cronTime": "0 42 14"
     },
     {
       "event": "standup",
-      "cronTime": "0 0 17 * * *"
+      "cronTime": "0 0 17"
     },
     {
       "event": "night",
-      "cronTime": "0 0 18 * * *"
+      "cronTime": "0 0 18"
     },
     {
       "event": "joke",
-      "cronTime": "0 0 19 * * *"
+      "cronTime": "0 0 19"
     }
   ]
 }
@@ -77,6 +77,6 @@ The schedule for sending each message can be configured in `jobs.json`. Create t
 
 - `standard`: the name refer to standard job, where each job inside it will be executed everyday. Future release will include `special`, where each job inside it will be executed on special day (e.g. at the end of the week).
 - `event`: as for now, supported events are `"quote"`, `"morning"`, `"lunch"`, `"fact"`, `"joke"`, `"standup"` and `"night"`.
-- `cronTime`: cron schedule expression.
+- `cronTime`: cron schedule expression. Supported cron values are `Seconds`, `Minutes` and `Hours`.
 
 After configuring both files, execute `npm run start` to run the bot.

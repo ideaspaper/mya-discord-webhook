@@ -14,7 +14,8 @@ const standardJobs: ICronWork[] = [];
 
 // Create work instances based on jobs.json, then store them to standardJobs
 for (const job of standard) {
-  const standardJob: ICronWork = new CronWork(job.cronTime, () => {
+  console.log(`${job.cronTime} * * *`);
+  const standardJob: ICronWork = new CronWork(`${job.cronTime} * * *`, () => {
     message.getMessage(job.event)
       .then((data) => {
         appLogger.log('info', `INDEX_INFO: ${data.text}`);
