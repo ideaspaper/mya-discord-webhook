@@ -18,7 +18,7 @@ for (const job of standard) {
     message.getMessage(job.event)
       .then((data) => {
         appLogger.log('info', `INDEX_INFO: ${data.text}`);
-        client.sendMessage(data.text);
+        client.sendMessage(data.text, job.event);
       })
       .then(() => {
         standardJob.getNextWork().start();
