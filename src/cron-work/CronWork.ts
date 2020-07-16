@@ -7,13 +7,13 @@ export class CronWork implements ICronWork {
   private nextWork: ICronWork;
   private job: CronJob;
 
-  constructor(cron: string, command: CronCommand) {
-    this.job = new CronJob(cron, command);
+  constructor(cron: string, command: CronCommand, completeCommand: CronCommand) {
+    this.job = new CronJob(cron, command, completeCommand);
     this.appLogger = AppLogger.getInstance();
   }
 
   public start(): void {
-    this.appLogger.log('info', `CRON_WORK_INFO: work will be started on ${this.getNextDate()}`);
+    this.appLogger.log('info', `CRON_WORK_INFO: work will be executed on ${this.getNextDate()}`);
     this.job.start();
   }
 

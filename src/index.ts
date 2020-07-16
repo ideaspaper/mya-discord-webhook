@@ -20,18 +20,18 @@ for (const job of standard) {
   const standardJob: ICronWork = new CronWork(`${job.cronTime} * * *`, () => {
     message.getMessage(job.event)
       .then((data) => {
-        appLogger.log('info', `INDEX_INFO: ${data.text}`);
         client.sendMessage(data.text, job.event);
+        appLogger.log('info', `INDEX_INFO: ${job.event} message has been sent`);
       })
       .then(() => {
-        standardJob.getNextWork().start();
         standardJob.stop();
       })
       .catch(() => {
         appLogger.log('error', 'INDEX_ERROR: cron job failed');
       });
+  }, () => {
+    standardJob.getNextWork().start();
   });
-
   standardJobs.push(standardJob);
 }
 
