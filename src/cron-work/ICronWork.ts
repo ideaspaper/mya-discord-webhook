@@ -3,4 +3,5 @@ export interface ICronWork {
   stop(): void;
   setNextWork(next: ICronWork): void;
   getNextWork(): ICronWork;
+  getNextDate(): moment.Moment;
 }

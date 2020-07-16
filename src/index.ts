@@ -9,6 +9,8 @@ const appLogger: AppLogger = AppLogger.getInstance();
 const message: DBMessage = DBMessage.getInstance();
 const client: DiscordClient = DiscordClient.getInstance();
 
+const appStartDate: Date = new Date();
+
 // Array for storing all standardJob work instance
 const standardJobs: ICronWork[] = [];
 
@@ -34,12 +36,18 @@ for (const job of standard) {
 
 // Assign next work instance (i + 1) for each of the work instances.
 // Last work instance will get first work instance as the next work.
+// This loop also determine which work instance should be executed first by its index.
+let firstWorkIndex: number = -1;
 for (let i = 0; i < standardJobs.length; i++) {
   i !== standardJobs.length - 1
     ? standardJobs[i].setNextWork(standardJobs[i + 1])
     : standardJobs[i].setNextWork(standardJobs[0]);
+
+  if (firstWorkIndex === -1 && standardJobs[i].getNextDate().date() === appStartDate.getDate()) {
+    firstWorkIndex = i;
+  }
 }
 
 // Start the first work instance.
 appLogger.log('info', 'INDEX_INFO: standard jobs started');
-standardJobs[0].start();
+standardJobs[firstWorkIndex].start();

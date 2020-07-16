@@ -1,27 +1,36 @@
 import { CronJob, CronCommand } from 'cron';
 import { ICronWork } from './ICronWork';
+import { AppLogger } from '../app-logger/AppLogger';
 
 export class CronWork implements ICronWork {
+  private appLogger: AppLogger;
   private nextWork: ICronWork;
   private job: CronJob;
 
-  constructor (cron: string, command: CronCommand) {
+  constructor(cron: string, command: CronCommand) {
     this.job = new CronJob(cron, command);
+    this.appLogger = AppLogger.getInstance();
   }
 
-  public start() {
+  public start(): void {
+    this.appLogger.log('info', `CRON_WORK_INFO: work will be started on ${this.getNextDate()}`);
     this.job.start();
   }
 
-  public stop() {
+  public stop(): void {
+    this.appLogger.log('info', 'CRON_WORK_INFO: work has been stopped');
     this.job.stop();
   }
 
-  public setNextWork(next: ICronWork) {
+  public setNextWork(next: ICronWork): void {
     this.nextWork = next;
   }
 
   public getNextWork(): ICronWork {
     return this.nextWork;
+  }
+
+  public getNextDate(): moment.Moment {
+    return this.job.nextDate();
   }
 }
