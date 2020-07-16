@@ -9,7 +9,7 @@ export class DiscordClient {
     this.client = new WebhookClient(webhookID, webhookToken);
   }
 
-  public static getInstance() {
+  public static getInstance(): DiscordClient {
     if (!DiscordClient.instance) {
       DiscordClient.instance = new DiscordClient();
     }
@@ -17,7 +17,7 @@ export class DiscordClient {
     return DiscordClient.instance;
   }
 
-  public sendMessage(message: string, format: string = '') {
+  public sendMessage(message: string, format: string = ''): void {
     switch(format) {
       case 'quote':
         this.client.send(`> **${message}**`);

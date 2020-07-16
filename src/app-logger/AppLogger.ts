@@ -42,7 +42,7 @@ export class AppLogger {
     return AppLogger.instance;
   }
 
-  public log(level: string, message: string) {
+  public log(level: string, message: string): void {
     const timeStamp = new Date().toLocaleDateString('en-GB', {
       day: '2-digit',
       month: '2-digit',
