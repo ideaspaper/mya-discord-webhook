@@ -10,6 +10,7 @@ const message: DBMessage = DBMessage.getInstance();
 const client: DiscordClient = DiscordClient.getInstance();
 
 const appStartDate: Date = new Date();
+appLogger.log('info', 'INDEX_INFO: app started');
 
 // Array for storing all standardJob work instance
 const standardJobs: ICronWork[] = [];
@@ -47,6 +48,7 @@ for (let i = 0; i < standardJobs.length; i++) {
     firstWorkIndex = i;
   }
 }
+appLogger.log('info', `INDEX_INFO: first work will be ${standard[firstWorkIndex].event}`);
 
 // Start the first work instance.
 appLogger.log('info', 'INDEX_INFO: standard jobs started');
