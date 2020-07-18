@@ -26,9 +26,12 @@ export class StandardCronWork implements ICronWork {
     this.workList.sort((a, b) => {
       const aCron = new CronTime(`${a.cronTime} * * 1-5`).sendAt().toDate().valueOf();
       const bCron = new CronTime(`${b.cronTime} * * 1-5`).sendAt().toDate().valueOf();
-      return (aCron - now.valueOf() > bCron - now.valueOf())
-        ? 1
-        : -1;
+      if (aCron - now.valueOf() > bCron - now.valueOf()) {
+        return 1;
+      } else if (aCron - now.valueOf() < bCron - now.valueOf()) {
+        return -1;
+      }
+      return 0;
     });
   }
 
