@@ -2,7 +2,7 @@
 
 ## Description
 
-This is Discord bot (webhook) for Hacktiv8 Remote Campus (Phase 0). One the aims of remote campus is to give students the experience of offline campus, therefore engaging environment is a must. Remote campus' instructors have to be active in chat, just like offline campus' instructors should be present in the campus all the time. After some observations, remote campus' instructors have to send some repetitive messages everyday. Those messages are:
+This is Discord bot (webhook) for Hacktiv8 Remote Campus (Phase 0). One the aims of remote campus is to give students the experience of offline campus, therefore engaging environment is a must. Remote campus' instructors have to be active in chat, just like offline campus' instructors should be present in the campus all the time. After some observations, remote campus' instructors have to send some repetitive messages everyday such as:
 
 - Quote + morning greeting.
 - Lunch greeting.
@@ -75,7 +75,7 @@ The schedule for sending each message can be configured in `jobs.json`. Create t
 }
 ```
 
-- `standard`: the name refer to standard job, where each job inside it will be executed everyday. Future release will include `special`, where each job inside it will be executed on special day (e.g. at the end of the week).
+- `standard`: the name refer to standard job, where each job inside it will be executed every work day (Monday - Friday).
 - `standard.event`: as for now, supported events are `"quote"`, `"morning"`, `"lunch"`, `"fact"`, `"joke"`, `"standup"` and `"night"`.
 - `standard.cronTime`: cron schedule expression. Supported cron values are `Seconds`, `Minutes` and `Hours`.
 
