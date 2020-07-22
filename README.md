@@ -79,4 +79,4 @@ The schedule for sending each message can be configured in `jobs.json`. Create t
 - `standard.event`: as for now, supported events are `"quote"`, `"morning"`, `"lunch"`, `"fact"`, `"joke"`, `"standup"` and `"night"`.
 - `standard.cronTime`: cron schedule expression. Supported cron values are `Seconds`, `Minutes` and `Hours`.
 
-After configuring both files, execute `./mya-discord-webhook.sh` to run the bot.
+After configuring both files, execute `./mya-discord-webhook` to run the bot.
