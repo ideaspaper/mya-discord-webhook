@@ -1,7 +1,7 @@
-import { AppLogger } from '../app-logger/AppLogger';
+import { AppLogger } from './../app-logger/AppLogger';
 import { CronTime, CronJob } from 'cron';
-import { DBMessage } from '../db-messages/DBMessage';
-import { DiscordClient } from '../discord-client/DiscordClient';
+import { DBMessage } from './../db-messages/DBMessage';
+import { DiscordClient } from './../discord-client/DiscordClient';
 import { ICronWork } from './ICronWork';
 
 export class StandardCronWork implements ICronWork {

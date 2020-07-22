@@ -4,5 +4,5 @@ then
   echo "Process already running"
 	exit 1
 else
-  npm run start
+  (cd "${0%/*}"; npm run start)
 fi

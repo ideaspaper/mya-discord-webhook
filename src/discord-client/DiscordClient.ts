@@ -1,5 +1,5 @@
 import { WebhookClient } from 'discord.js'
-import { webhookID, webhookToken } from '../config.json'
+import { webhookID, webhookToken } from './../config.json'
 
 export class DiscordClient {
   private static instance: DiscordClient;

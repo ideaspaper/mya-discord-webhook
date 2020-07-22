@@ -1,7 +1,7 @@
 import { Database } from 'sqlite3';
 import { join } from 'path';
-import { dbName } from '../config.json';
-import { AppLogger } from '../app-logger/AppLogger';
+import { dbName } from './../config.json';
+import { AppLogger } from './../app-logger/AppLogger';
 
 export class DBCon {
   private static instance: DBCon;

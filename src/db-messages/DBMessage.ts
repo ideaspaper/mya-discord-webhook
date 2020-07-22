@@ -1,6 +1,6 @@
-import { DBCon } from '../dbcon/DBCon';
+import { DBCon } from './../dbcon/DBCon';
 import { Database } from 'sqlite3';
-import { AppLogger } from '../app-logger/AppLogger';
+import { AppLogger } from './../app-logger/AppLogger';
 
 export class DBMessage {
   private static instance: DBMessage;
