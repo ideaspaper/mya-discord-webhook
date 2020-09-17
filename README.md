@@ -26,8 +26,8 @@ Configuration for this bot will be taken from `config.json`. You should create t
 {
   "webhookID": "",
   "webhookToken": "",
-  "webhookName": "",
-  "dbName": ""
+  "webhookName": "MYA",
+  "dbName": "webhook.db"
 }
 ```
 
