@@ -21,7 +21,7 @@
     "@types/ws": "7.2.6",
     "cron": "1.8.2",
     "discord.js": "12.2.0",
-    "sqlite3": "5.0.0",
+    "sqlite3": "5.0.3",
     "tslint": "6.1.2",
     "typescript": "3.9.6",
     "winston": "3.3.3"
